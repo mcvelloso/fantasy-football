@@ -20,6 +20,9 @@ class HarrisTop200(BaseScraper):
           outFile.write('Rank,Name,Position,Drafted?\n')
         else:
           row = tr.get_text().strip().replace('\n', ',')
+          fields = row.split(',')
+          if len(fields) > 3:
+            row = fields[0].strip() + ',' + fields[1].strip() + ' ' + fields[2].strip() + ',' + fields[3].strip()
           outFile.write(row + ",N\n")
         count += 1
 
